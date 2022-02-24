@@ -58,6 +58,7 @@ import { group } from './util/group-data';
 import { isModelChange } from './util/is-model-change';
 import { parseFields } from './util/parse-fields';
 import { diff } from './util/diff';
+import { inferScaleType } from '../util/scale';
 import { getXDimensionLength } from '../util/coordinate';
 
 /** @ignore */
@@ -67,7 +68,9 @@ interface AttributeInstanceCfg {
   values?: string[] | number[];
   scales?: Scale[];
 }
-
+interface DimValuesMapType {
+  [dim: string]: number[];
+}
 /** @ignore */
 interface AdjustInstanceCfg {
   type: AdjustType;
@@ -97,6 +100,8 @@ interface AdjustInstanceCfg {
   minColumnWidth?: number;
   /** 柱宽比例 */
   columnWidthRatio?: number;
+  /** 用户自定义的dimValuesMap */
+  dimValuesMap?: DimValuesMapType;
 }
 
 /** geometry.init() 传入参数 */
@@ -1210,10 +1215,7 @@ export default class Geometry<S extends ShapePoint = ShapePoint> extends Base {
       id = `${xVal}-${yVal}`;
     }
 
-    let groupScales = this.groupScales;
-    if (isEmpty(groupScales)) {
-      groupScales = get(this.getAttribute('color'), 'scales', []);
-    }
+    const groupScales = this.groupScales;
 
     for (let index = 0, length = groupScales.length; index < length; index++) {
       const groupScale = groupScales[index];
@@ -1685,9 +1687,12 @@ export default class Geometry<S extends ShapePoint = ShapePoint> extends Base {
         // 获取每一个字段对应的 scale
         const scales = fields.map((field) => {
           const scale = this.scales[field];
-          if (scale.isCategory && !tmpMap[field] && GROUP_ATTRS.includes(attrType)) {
-            this.groupScales.push(scale);
-            tmpMap[field] = true;
+          if (!tmpMap[field] && GROUP_ATTRS.includes(attrType)) {
+            const inferedScaleType = inferScaleType(scale, get(this.scaleDefs, field), attrType, this.type);
+            if (inferedScaleType === 'cat') {
+              this.groupScales.push(scale);
+              tmpMap[field] = true;
+            }
           }
           return scale;
         });
@@ -1820,6 +1825,11 @@ export default class Geometry<S extends ShapePoint = ShapePoint> extends Base {
           }
         }
         const adjustCtor = getAdjustClass(type);
+        adjustCfg.dimValuesMap = {};
+        //生成dimValuesMap
+        if (xScale && xScale.values) {
+          adjustCfg.dimValuesMap[xScale.field] = xScale.values.map((v) => xScale.translate(v));
+        }
         const adjustInstance = new adjustCtor(adjustCfg);
 
         result = adjustInstance.process(result);

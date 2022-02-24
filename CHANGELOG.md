@@ -1,3 +1,87 @@
+#### 4.1.46 (2022-02-11)
+
+##### Documentation Changes
+
+*  修改钉钉群号 ([ce197ed0](https://github.com/antvis/g2/commit/ce197ed0f64ad5c87bd99f26f48303388b7b4eaf))
+
+##### Bug Fixes
+
+*  修复 timeCat scale 没有当作 groupScale，导致对应场景的折线图绘制无法正常分组 ([1861807e](https://github.com/antvis/g2/commit/1861807ebc1cd3c21bdf2d35a930d67bc72c5cd3))
+*  update actions/checkout version to avoid vulnerability ([#3774](https://github.com/antvis/g2/pull/3774)) ([781eb8c8](https://github.com/antvis/g2/commit/781eb8c8b11cfc69a97eda27a5e9c746f2c40485))
+
+#### 4.1.45 (2022-02-09)
+
+##### Bug Fixes
+
+* **interval:**  修复 interval color 通道没有 field，会导致 tooltip name 消失 ([3e3d03fb](https://github.com/antvis/g2/commit/3e3d03fbf4b7270ef5eaa3ec7886864555691ed8))
+
+#### 4.1.44 (2022-02-08)
+
+##### Chores
+
+*  add pr-auto-labels & auto-release-generate ([94146ea0](https://github.com/antvis/g2/commit/94146ea0502cb4a5afc912d2e5ff48cc7700b6a8))
+
+##### Bug Fixes
+
+* **charts:**  修复 annotations 创建失败 ([09cde2d1](https://github.com/antvis/g2/commit/09cde2d1f929e69aed78273cac2f5351f37e0913))
+
+#### 4.1.42 (2022-01-28)
+
+##### Bug Fixes
+
+* **slider:**  修复slider过大挤压图形的问题 [#2968](https://github.com/antvis/g2/pull/2968) ([#3794](https://github.com/antvis/g2/pull/3794)) ([a3187617](https://github.com/antvis/g2/commit/a3187617e6750bec7a5ec2aa34224272c8e0b329))
+* **toolitp:**  修复 limitInPlot属性无法屏蔽一些后出现的状态 ([#3792](https://github.com/antvis/g2/pull/3792)) ([50e319dc](https://github.com/antvis/g2/commit/50e319dcd8c845b77c28d5292403321415743ae9))
+
+#### 4.1.41 (2022-01-25)
+
+##### Bug Fixes
+
+*  修复 jitter 点图 adjust 后点位置不正确的问题 ([#3790](https://github.com/antvis/g2/pull/3790)) ([5ffcb7ac](https://github.com/antvis/g2/commit/5ffcb7acc6ed445c694c8dfd4b2a1631281b1fe3))
+*  修复获取分组scale错误 & tooltip 获取 value-scale 不忽略 color、shape 通道相关字段 ([#3768](https://github.com/antvis/g2/pull/3768)) ([ab893335](https://github.com/antvis/g2/commit/ab893335ebf274c7291331feceec3f65a5cbd26f))
+
+#### 4.1.40 (2022-01-18)
+
+##### Documentation Changes
+
+*   添加对scale的值域说明，与d3 值域用法相对比，防止误解。 ([#3781](https://github.com/antvis/g2/pull/3781)) ([3b07b921](https://github.com/antvis/g2/commit/3b07b9211bc1d3fc628a4b74d22dc67570a37b17))
+
+##### New Features
+
+* **legend:**  图例 radio增加 tip 文案提示 ([#3786](https://github.com/antvis/g2/pull/3786)) ([6736def0](https://github.com/antvis/g2/commit/6736def0aee2ea02fd645a170e9368dc91e032ea))
+
+##### Bug Fixes
+
+* **legend:**  修复 legend radio 设置样式不生效 ([#3784](https://github.com/antvis/g2/pull/3784)) ([fe554991](https://github.com/antvis/g2/commit/fe55499114c4dd440d48747af07e882a8cc87767))
+
+##### Chores
+
+*  resolutions 更新 修复 remark-mdx 引入问题 ([#3785](https://github.com/antvis/g2/pull/3785)) ([0212ce97](https://github.com/antvis/g2/commit/0212ce97823373537002c9c1c4de9ecb22c94fee))
+*  release actions ([52059d5e](https://github.com/antvis/g2/commit/52059d5e603e5e20b062900ca150693c09376850))
+
+#### 4.1.39 (2022-01-14)
+
+##### Chores
+
+*  增加dingtalk-release-nofity ([#3778](https://github.com/antvis/g2/pull/3778)) ([c69af004](https://github.com/antvis/g2/commit/c69af004c27ce738be11470572f330e40921ac54))
+
+##### Bug Fixes
+
+* **legend:**  修复图例 radio focus 模式 & 增加 demo ([#3779](https://github.com/antvis/g2/pull/3779)) ([5295b78a](https://github.com/antvis/g2/commit/5295b78a3d25c07a6b3a27c7ee7c15a6ed6be831))
+*  remove node 12 to fix release action failed ([#3720](https://github.com/antvis/g2/pull/3720)) ([1358be9a](https://github.com/antvis/g2/commit/1358be9a05a33f313b54d0f18a47df048f92ecb1))
+
+#### 4.1.38 (2022-01-12)
+
+##### Bug Fixes
+
+* **issue-3723:**  修复annotation 在筛选条件下，范围外的标注不需要展示 ([#3775](https://github.com/antvis/g2/pull/3775)) ([151f9152](https://github.com/antvis/g2/commit/151f915280cb7d00604a39c2c96859bb92dc6395))
+* **slider,scrollbar:**  修复slider 、scrollbar values 排序错误的问题 ([#3773](https://github.com/antvis/g2/pull/3773)) ([6e84c446](https://github.com/antvis/g2/commit/6e84c44684149cf0c5754cb8b537dd541011dc06))
+
+#### 4.1.37 (2022-01-04)
+
+##### Bug Fixes
+
+* **slider,scrollbar:**  滚动条和缩略轴 在xScale 为线性时筛选错误的问题 ([#3767](https://github.com/antvis/g2/pull/3767)) ([768eb3c3](https://github.com/antvis/g2/commit/768eb3c34bd0d1c031554cac8f33146a845a901e))
+
 #### 4.1.36 (2021-12-29)
 
 ##### New Features

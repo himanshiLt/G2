@@ -1,6 +1,6 @@
 {
   "name": "@antv/g2",
-  "version": "4.1.36",
+  "version": "4.1.46",
   "description": "the Grammar of Graphics in Javascript",
   "main": "lib/index.js",
   "module": "esm/index.js",
@@ -25,7 +25,7 @@
     "lint:md": "lint-md ./docs",
     "lint:eslint": "eslint ./src/**/*.ts",
     "test": "jest -w 16",
-    "test-live": "DEBUG_MODE=1 jest --watch tests/unit",
+    "test-live": "DEBUG_MODE=1 jest --watch",
     "coverage": "jest -w 16 --coverage",
     "lib:cjs": "tsc -p tsconfig.json --target ES5 --module commonjs --outDir lib",
     "lib:esm": "tsc -p tsconfig.json --target ES5 --module ESNext --outDir esm",
@@ -80,6 +80,8 @@
     "mock-variable": "^0.0.2",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.5",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
     "react-i18next": "^11.1.0",
     "rimraf": "^3.0.0",
     "ts-jest": "^26.0.0",
@@ -145,6 +147,7 @@
     "monaco-editor": "0.21.3",
     "@babel/plugin-transform-spread": "7.12.1",
     "d3-array": "2.12.1",
-    "normalize-url": "^4.5.1"
+    "normalize-url": "^4.5.1",
+    "remark-mdx": "1.6.22"
   }
 }
